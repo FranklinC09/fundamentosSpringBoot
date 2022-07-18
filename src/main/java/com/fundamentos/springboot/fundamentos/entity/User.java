@@ -8,29 +8,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_user",nullable = false,unique = true)
+    @Column(name="id_user", nullable = false, unique = true)
     private Long id;
+
     @Column(length = 50)
-    private String nombre;
+    private String name;
     @Column(length = 50)
     private String email;
 
     private LocalDate birthDate;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Post> posts = new ArrayList<>();
 
     public User() {
     }
 
-    public User(String nombre, String email, LocalDate birthDate) {
-        this.nombre = nombre;
+    public User(String name, String email, LocalDate birthDate) {
+        this.name = name;
         this.email = email;
         this.birthDate = birthDate;
     }
@@ -43,12 +44,12 @@ public class User {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -79,7 +80,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", nombre='" + nombre + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
                 ", posts=" + posts +

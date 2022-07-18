@@ -8,18 +8,20 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_post",nullable = false,unique = true)
+    @Column(name="id_post", nullable = false, unique = true)
     private Long id;
-    @Column(name="descripcion",length = 255)
-    private String descripcion;
+
+    @Column(name="description", length = 255)
+    private String description;
+
     @ManyToOne
     private User user;
 
     public Post() {
     }
 
-    public Post(String descripcion, User user) {
-        this.descripcion = descripcion;
+    public Post(String description, User user) {
+        this.description = description;
         this.user = user;
     }
 
@@ -31,12 +33,12 @@ public class Post {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public User getUser() {
@@ -51,7 +53,7 @@ public class Post {
     public String toString() {
         return "Post{" +
                 "id=" + id +
-                ", descripcion='" + descripcion + '\'' +
+                ", description='" + description + '\'' +
                 ", user=" + user +
                 '}';
     }
